@@ -10,7 +10,7 @@ import org.apache.http.util.EntityUtils
 
 object getContent {
 
-  def getNewRelicContentFromUrl(apikey: String, apiurl: String): Unit = {
+  def getNewRelicContentFromUrl(apiurl: String, apikey: String): String = {
 
     //import sys.process._
     //val data = List("curl", "-H", s"X-API-KEY: ${apikey}", s"${apiurl}").!!
@@ -24,8 +24,8 @@ object getContent {
     val client = new DefaultHttpClient
     val entity = client.execute(httpGet).getEntity
     val json = EntityUtils.toString(entity)
-    println(json)
     client.getConnectionManager.shutdown
+    return json
   }
 
   def main(args: Array[String]) {
