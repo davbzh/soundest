@@ -22,8 +22,9 @@ object getContent {
 
     // execute the request
     val client = new DefaultHttpClient
-    val bla = client.execute(httpGet).getEntity
-    println(EntityUtils.toString(bla))
+    val entity = client.execute(httpGet).getEntity
+    val json = EntityUtils.toString(entity)
+    println(json)
     client.getConnectionManager.shutdown
   }
 
